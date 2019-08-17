@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/ros/crystal/include",
+                "${workspaceFolder}/include",
+                "/home/lashhev/colcon_ws/install/geographic_msgs/include",
+                "${workspaceFolder}/../../build/yaml-printer/generated"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}

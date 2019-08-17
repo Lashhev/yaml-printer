@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "cd ../.. && . ~/ros2.sh && colcon build --symlink-install --packages-select yaml-printer",
+            "type": "shell",
+            "args": [],
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "presentation": {
+                "reveal": "always"
+            },
+            "group": "build"
+        }
+    ]
+}
