@@ -51,7 +51,7 @@ CONVERT_SIZED_ARRAY(double, 3);
   {
     static Node encode(const rosidl_generator_cpp::BoundedVector<double, 3, std::allocator<double> >  &rhs) { 
     Node SolidPrimitive;
-    double* f = static_cast<double*>(rhs.data());
+    double f[3] = {1,2,43};//static_cast<double*>(rhs.data());
     std::vector<double> v;
     v.assign(f, f + 3);
     SolidPrimitive = v;
@@ -60,6 +60,7 @@ CONVERT_SIZED_ARRAY(double, 3);
 
     static bool decode(const Node& node, rosidl_generator_cpp::BoundedVector<double, 3, std::allocator<double> >  &rhs) 
     {
+      
       return false;
     }
   };
