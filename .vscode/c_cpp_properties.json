@@ -7,7 +7,10 @@
                 "/opt/ros/crystal/include",
                 "${workspaceFolder}/include",
                 "/home/lashhev/colcon_ws/install/geographic_msgs/include",
-                "${workspaceFolder}/../../build/yaml-printer/generated"
+                "/home/lashhev/colcon_ws/install/uuid_msgs/include",
+                "${workspaceFolder}/../../build/yaml-printer/generated",
+                "/usr/include/linux",
+                "/usr/lib/gcc/x86_64-linux-gnu/7/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
