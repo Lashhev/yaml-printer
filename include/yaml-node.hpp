@@ -7,6 +7,7 @@
 #include "sstream"
 #include <memory>
 //#include <yaml-cpp/yaml.h>
+#include "yaml-helper.cpp"
 
 using std::placeholders::_1;
 class YamlNodeBase
@@ -33,10 +34,11 @@ class YamlNode: public YamlNodeBase
 template <class MessageT>
 void YamlNode<MessageT>::topic_callback_(const std::shared_ptr<MessageT> msg)
 {
- // YAML::Node ros_msg;
+  YAML::Node ros_msg;
   std::stringstream output;
-
-  RCLCPP_INFO(yaml_node_->get_logger(),"\nGot it!");
+  ros_msg = *msg.get();
+  output << ros_msg;
+  RCLCPP_INFO(yaml_node_->get_logger(),"\n%s", output.str().c_str());
 }
 template <class MessageT>
 YamlNode<MessageT>::YamlNode()
