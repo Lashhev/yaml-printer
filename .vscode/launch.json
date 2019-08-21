@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/bin/get_rospack.py",
             "args": ["--output-path", 
-                    "${workspaceFolder}/build/yaml-printer/generated",
+                    "${workspaceFolder}/../../build/yaml-printer/generated",
                     "--template-dir",
                     "${workspaceFolder}/resources"],
             "console": "integratedTerminal"
