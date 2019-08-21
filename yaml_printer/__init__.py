@@ -14,13 +14,13 @@ def generate_cpp(output_path, template_dir):
     msgs = generate_messages()
     for pack in msgs['ros2_package_names_msg']:
         msg_list = {'mappings': [ m for m in msgs['mappings'] if (m.ros2_msg.package_name == pack and m.fields is not None)]}
-        template_file = os.path.join(template_dir, 'pkg_yaml_helper.cpp.em')
-        output_file = os.path.join(output_path, '%s_yaml-helper.cpp' % pack)
-        data_for_template = {'mappings': msg_list['mappings']}
-        try:
-            expand_template(template_file, data_for_template, output_file)
-        except RuntimeError as e:
-                print(str(e), file=sys.stderr)
+        # template_file = os.path.join(template_dir, 'pkg_yaml_helper.cpp.em')
+        # output_file = os.path.join(output_path, '%s_yaml-helper.cpp' % pack)
+        # data_for_template = {'mappings': msg_list['mappings']}
+        # try:
+        #     expand_template(template_file, data_for_template, output_file)
+        # except RuntimeError as e:
+        #         print(str(e), file=sys.stderr)
         data_for_template = {'mappings': msg_list['mappings'], 'ros2_package_name':pack}
         template_file = os.path.join(template_dir, 'pkg_building_interface.cpp.em')
         output_file = os.path.join(output_path, '%s_building_interface.cpp' % pack)
@@ -38,6 +38,13 @@ def generate_cpp(output_path, template_dir):
     template_file = os.path.join(template_dir, 'building_interface.cpp.em')
     output_file = os.path.join(output_path, 'building_interface.cpp')
     data_for_template = {'ros2_package_names': msgs['ros2_package_names_msg']}
+    try:
+        expand_template(template_file, data_for_template, output_file)
+    except RuntimeError as e:
+        print(str(e), file=sys.stderr)
+    template_file = os.path.join(template_dir, 'pkg_yaml_helper.cpp.em')
+    output_file = os.path.join(output_path, 'yaml-helper.cpp')
+    data_for_template = {'mappings': msgs['mappings']}
     try:
         expand_template(template_file, data_for_template, output_file)
     except RuntimeError as e:
