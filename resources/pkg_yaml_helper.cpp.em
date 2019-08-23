@@ -17,18 +17,18 @@
 @{
 from yaml_printer import camel_case_to_lower_case_underscore
 }@
-#define CONVERT_SIZED_ARRAY(type, size) \
-template<> \
-  struct convert<std::array<type, size>> \
+#define CONVERT_SIZED_ARRAY(type) \
+template<std::size_t N> \
+  struct convert<std::array<type, N>> \
   { \
-    static Node encode(const std::array<type, size> &rhs) { \
+    static Node encode(const std::array<type, N> &rhs) { \
     Node array; \
     std::vector<type> v; \
-    v.assign(rhs.data(), rhs.data() + size); \
+    v.assign(rhs.data(), rhs.data() + N); \
     array = v; \
     return array; \
     } \
-    static bool decode(const Node& node, std::array<type, size> &rhs) \
+    static bool decode(const Node& node, std::array<type, N> &rhs) \
     { \
       return false; \
     } \
@@ -39,13 +39,17 @@ template<> \
 #include <@(mapping.ros2_msg.package_name)/msg/@(camel_case_to_lower_case_underscore(mapping.ros2_msg.message_name)).hpp>
 @[end for]@
 namespace YAML {
-CONVERT_SIZED_ARRAY(uint8_t, 16);
-CONVERT_SIZED_ARRAY(double, 36);
-CONVERT_SIZED_ARRAY(double, 9);;
-CONVERT_SIZED_ARRAY(double, 12);
-CONVERT_SIZED_ARRAY(uint32_t, 3);
-CONVERT_SIZED_ARRAY(double, 4);
-CONVERT_SIZED_ARRAY(double, 3);
+  CONVERT_SIZED_ARRAY(char);
+  CONVERT_SIZED_ARRAY(uint8_t);
+  CONVERT_SIZED_ARRAY(uint16_t);
+  CONVERT_SIZED_ARRAY(uint32_t);
+  CONVERT_SIZED_ARRAY(uint64_t);
+  CONVERT_SIZED_ARRAY(int8_t);
+  CONVERT_SIZED_ARRAY(int16_t);
+  CONVERT_SIZED_ARRAY(int32_t);
+  CONVERT_SIZED_ARRAY(int64_t);
+  CONVERT_SIZED_ARRAY(double);
+  CONVERT_SIZED_ARRAY(float);
   template<>
   struct convert<rosidl_generator_cpp::BoundedVector<double, 3, std::allocator<double> > > 
   {
