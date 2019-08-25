@@ -8,6 +8,7 @@
 #include <memory>
 //#include <yaml-cpp/yaml.h>
 #include "yaml-helper.cpp"
+#include "csv.hpp"
 
 using std::placeholders::_1;
 class YamlNodeBase
@@ -38,6 +39,7 @@ void YamlNode<MessageT>::topic_callback_(const std::shared_ptr<MessageT> msg)
   std::stringstream output;
   ros_msg = *msg.get();
   output << ros_msg;
+  // output << *msg.get();
   RCLCPP_INFO(yaml_node_->get_logger(),"\n%s", output.str().c_str());
 }
 template <class MessageT>
