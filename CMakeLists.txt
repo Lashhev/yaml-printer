@@ -20,6 +20,7 @@ find_package(yaml-cpp REQUIRED)
 set(generated_path "${CMAKE_BINARY_DIR}/generated")
 set(generated_files "${generated_path}/building_interface.cpp")
 list(APPEND generated_files "${generated_path}/yaml-helper.cpp")
+list(APPEND generated_files "${generated_path}/csv.cpp")
 # generate per package compilation units to keep the memory usage low
 ament_index_get_resources(ros2_message_packages "rosidl_interfaces")
 foreach(message_package ${ros2_message_packages})
