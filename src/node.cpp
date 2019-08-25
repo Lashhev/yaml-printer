@@ -6,7 +6,6 @@ int main(int argc, char * argv[])
     return 0;
   rclcpp::init(argc, argv);
   std::string msg_name = argv[1];
-  printf("%s\n",msg_name.c_str() );
   std::shared_ptr<YamlNodeBase> topic_node = get_yaml_node(msg_name);
   return 0;
 }
